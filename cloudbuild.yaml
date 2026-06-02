@@ -1,0 +1,13 @@
+steps:
+  # Étape 1 : Préparation de l'infrastructure Proball
+  - name: 'hashicorp/terraform:light'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        terraform init
+        terraform apply -auto-approve
+
+  # Étape 2 : Confirmation finale
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['echo', 'Bravo antoboorox, Proball est en cours de déploiement !']
